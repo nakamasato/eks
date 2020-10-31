@@ -98,11 +98,28 @@
     configmap "aws-auth" created
     ```
 
+1. Check
+
+    nodes:
+
     ```
     kubectl get nodes
     NAME                                            STATUS   ROLES    AGE     VERSION
     ip-10-0-0-78.ap-northeast-1.compute.internal    Ready    <none>   3m12s   v1.17.11-eks-cfdc40
     ip-10-0-1-220.ap-northeast-1.compute.internal   Ready    <none>   3m12s   v1.17.11-eks-cfdc40
+    ```
+
+    pods:
+
+    ```
+    kubectl get pod --all-namespaces
+    NAMESPACE     NAME                      READY   STATUS    RESTARTS   AGE
+    kube-system   aws-node-bb5sd            1/1     Running   0          71s
+    kube-system   aws-node-ldtm8            1/1     Running   0          73s
+    kube-system   coredns-79769ff86-4l29s   1/1     Running   0          3m41s
+    kube-system   coredns-79769ff86-dvpf9   1/1     Running   0          3m41s
+    kube-system   kube-proxy-rmwhc          1/1     Running   0          71s
+    kube-system   kube-proxy-vnh47          1/1     Running   0          73s
     ```
 
 ## Cluster Autoscaler
@@ -143,7 +160,7 @@ please refer to the k8s/cluster-autoscaler
         - `/aws/eks/terraform-eks-demo/cluster`
 - ec2
     - autoscaling group
-    - ec2 instance
+    - ec2 instance (2 nodes)
 
 # References
 
