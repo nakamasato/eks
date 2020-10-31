@@ -1,4 +1,5 @@
-data "aws_iam_policy_document" "ebs-full-access-policy" {
+# this is for portworx
+data "aws_iam_policy_document" "ebs-full-access" {
   statement {
     actions = [
       "ec2:AttachVolume",
@@ -19,14 +20,14 @@ data "aws_iam_policy_document" "ebs-full-access-policy" {
   }
 }
 
-resource "aws_iam_policy" "ebs-full-access-policy" {
+resource "aws_iam_policy" "ebs-full-access" {
   name        = "${local.name}-ebs-full-access-"
   description = "enable portworx running on eks worker node to create/delete ebs"
 
-  policy = data.aws_iam_policy_document.ebs-full-access-policy.json
+  policy = data.aws_iam_policy_document.ebs-full-access.json
 }
 
-resource "aws_iam_role_policy_attachment" "demo-node-ebs-full-access-policy" {
-  policy_arn = aws_iam_policy.ebs-full-access-policy.arn
+resource "aws_iam_role_policy_attachment" "demo-node-ebs-full-access" {
+  policy_arn = aws_iam_policy.ebs-full-access.arn
   role       = aws_iam_role.demo-node.name
 }

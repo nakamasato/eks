@@ -1,3 +1,4 @@
 .terraform
 naka.tfvars
 backend.conf
+config_map_aws_auth.yaml

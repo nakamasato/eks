@@ -1,5 +1,5 @@
-
-
+locals {
+  config_map_aws_auth = <<CONFIGMAPAWSAUTH
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -7,8 +7,14 @@ metadata:
   namespace: kube-system
 data:
   mapRoles: |
-    - rolearn: arn:aws:iam::135493629466:role/ec2-terraform-eks-demo
+    - rolearn: ${aws_iam_role.demo-node.arn}
       username: system:node:{{EC2PrivateDNSName}}
       groups:
         - system:bootstrappers
         - system:nodes
+CONFIGMAPAWSAUTH
+}
+
+output "config_map_aws_auth" {
+  value = local.config_map_aws_auth
+}

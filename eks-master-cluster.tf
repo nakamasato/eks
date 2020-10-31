@@ -12,6 +12,6 @@ resource "aws_eks_cluster" "demo" {
   depends_on = [
     aws_iam_role_policy_attachment.demo-cluster-AmazonEKSClusterPolicy,
     aws_iam_role_policy_attachment.demo-cluster-AmazonEKSServicePolicy,
-    aws_cloudwatch_log_group.demo,
+    # aws_cloudwatch_log_group.demo,
   ]
 }
