@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # apply terraform to create EKS cluster
-terraform init
-terraform apply
+terraform init --backend-config="backend.conf"
+terraform apply -var-file="naka.tfvars"
 
 # kube config
 mkdir -p ~/.kube

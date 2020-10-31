@@ -128,12 +128,24 @@ please refer to the k8s/cluster-autoscaler
 
 - iam
     - role
+        - `ec2-demo-node`
+        - `eks-demo-cluster`
     - policy
+        - `log-policy`
+        - `ebs-full-access`
+    - aws_iam_instance_profile
+        - `demo-node`
     - role_policy_attachment
 - eks
-    - eks cluster
+    - `terraform-eks-demo`
 - cloudwatch
     - log group
+        - `/aws/eks/terraform-eks-demo/cluster`
 - ec2
     - autoscaling group
     - ec2 instance
+
+# References
+
+- https://github.com/terraform-aws-modules/terraform-aws-eks
+- https://learn.hashicorp.com/tutorials/terraform/eks
