@@ -1,0 +1,21 @@
+name: eks-official
+
+on:
+  pull_request:
+    paths:
+    - '**.tf'
+    - '.github/workflows/eks-official.yml'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: official
+    steps:
+      - uses: actions/checkout@v2
+      - uses: hashicorp/setup-terraform@v1
+      - name: Terraform fmt
+        id: fmt
+        run: terraform fmt -check
+        continue-on-error: true
