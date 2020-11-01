@@ -122,6 +122,12 @@
     kube-system   kube-proxy-vnh47          1/1     Running   0          73s
     ```
 
+## Clean up a cluster
+
+```
+terraform destroy -var-file="your.tfvars"
+```
+
 ## Cluster Autoscaler
 
 ### Reference
@@ -129,17 +135,22 @@
 https://eksworkshop.com/scaling/deploy_ca/
 
 
-### add autoscaling policy to worker node group
-
-eks-worker-node-iam-cluster-autoscaler.tf
-
-```
-terraform plan
-```
-
 ### settings of autoscaler
 
 please refer to the k8s/cluster-autoscaler
+
+## Container Insights
+
+logs & metrics
+
+```
+curl https://raw.githubusercontent.com/aws-samples/amazon-cloudwatch-container-insights/latest/k8s-deployment-manifest-templates/deployment-mode/daemonset/container-insights-monitoring/quickstart/cwagent-fluentd-quickstart.yaml | sed "s/{{cluster_name}}/terraform-eks-demo/;s/{{region_name}}/ap-northeast-1/" | kubectl apply -f -
+```
+
+```
+kubectl apply -f https://raw.githubusercontent.com/aws-samples/amazon-cloudwatch-container-insights/latest/k8s-deployment-manifest-templates/deployment-mode/daemonset/container-insights-monitoring/cloudwatch-namespace.yaml
+```
+
 
 # Resources
 
@@ -164,5 +175,16 @@ please refer to the k8s/cluster-autoscaler
 
 # References
 
-- https://github.com/terraform-aws-modules/terraform-aws-eks
-- https://learn.hashicorp.com/tutorials/terraform/eks
+- Terraform
+    - https://github.com/terraform-aws-modules/terraform-aws-eks
+    - https://learn.hashicorp.com/tutorials/terraform/eks
+- EKS
+    - logging: https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html
+    - worker node: https://docs.aws.amazon.com/eks/latest/userguide/eks-compute.html
+    - Container Insights:
+        - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/deploy-container-insights-EKS.html
+        - https://www.eksworkshop.com/intermediate/250_cloudwatch_container_insights/
+
+# Issues
+
+- [ ] Changing `instance_type` in launch_configuration doesn't trigger rolling update of worker nodes
