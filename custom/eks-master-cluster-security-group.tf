@@ -1,7 +1,7 @@
 resource "aws_security_group" "demo-cluster" {
-  name        = local.name
+  name        = var.cluster_name
   description = "Cluster communication with worker nodes"
-  vpc_id      = aws_vpc.demo.id
+  vpc_id      = module.vpc.vpc_id
 
   egress {
     from_port   = 0
@@ -11,7 +11,7 @@ resource "aws_security_group" "demo-cluster" {
   }
 
   tags = {
-    Name = "terraform-eks-demo"
+    Name = var.cluster_name
   }
 }
 

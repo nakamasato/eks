@@ -8,12 +8,21 @@ variable "aws_profile" {
   default = "default"
 }
 
-variable "eks_prefix" {
+variable "vpc_cidr_block" {
+  default     = "10.0.0.0/16"
+  description = "cidr for vpc"
+}
+
+variable "cluster_name" {
   type    = string
-  default = "terraform-eks"
+  default = "terraform-aws-custom"
+}
+
+variable "kubernetes_version" {
+  default = "1.17"
 }
 
 variable "allowed_cidr_blocks" {
-  default = []
+  default     = []
   description = "whitelist ip range for api"
 }

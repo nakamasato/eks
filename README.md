@@ -46,87 +46,10 @@
     Client Version: version.Info{Major:"1", Minor:"17+", GitVersion:"v1.17.11-eks-cfdc40", GitCommit:"cfdc40d4c1b7d14eb60152107963ae41aa2e4804", GitTreeState:"clean", BuildDate:"2020-09-17T17:10:39Z", GoVersion:"go1.13.15", Compiler:"gc", Platform:"darwin/amd64"}
     ```
 
-# quick start
+## Directory
 
-```
-./configure.sh
-```
-
-# How to use
-
-## Create an EKS cluster
-
-1. Prepare your own `tfvars`
-
-    ```
-    cp {example,your}.tfvars
-    cp backend.conf{.example,}
-    ```
-
-1. apply terraform
-
-    ```
-    terraform init --backend-config="backend.conf"
-    terraform apply -var-file="your.tfvars"
-
-    mkdir -p ~/.kube
-    terraform output kubeconfig > ~/.kube/config
-    ```
-
-1. Check kube config is properly updated
-
-    ```
-    kubectl cluster-info
-    Kubernetes master is running at https://<hash>.yl4.ap-northeast-1.eks.amazonaws.com
-    CoreDNS is running at https://<hash>.ap-northeast-1.eks.amazonaws.com/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
-
-    To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
-    ```
-
-1. ConfigMap
-
-    get config map from terraform output
-
-    ```
-    terraform output config_map_aws_auth > config_map_aws_auth.yaml
-    ```
-
-    Create ConfigMap using `kubectl`
-
-    ```
-    kubectl apply -f config_map_aws_auth.yaml
-    configmap "aws-auth" created
-    ```
-
-1. Check
-
-    nodes:
-
-    ```
-    kubectl get nodes
-    NAME                                            STATUS   ROLES    AGE     VERSION
-    ip-10-0-0-78.ap-northeast-1.compute.internal    Ready    <none>   3m12s   v1.17.11-eks-cfdc40
-    ip-10-0-1-220.ap-northeast-1.compute.internal   Ready    <none>   3m12s   v1.17.11-eks-cfdc40
-    ```
-
-    pods:
-
-    ```
-    kubectl get pod --all-namespaces
-    NAMESPACE     NAME                      READY   STATUS    RESTARTS   AGE
-    kube-system   aws-node-bb5sd            1/1     Running   0          71s
-    kube-system   aws-node-ldtm8            1/1     Running   0          73s
-    kube-system   coredns-79769ff86-4l29s   1/1     Running   0          3m41s
-    kube-system   coredns-79769ff86-dvpf9   1/1     Running   0          3m41s
-    kube-system   kube-proxy-rmwhc          1/1     Running   0          71s
-    kube-system   kube-proxy-vnh47          1/1     Running   0          73s
-    ```
-
-## Clean up a cluster
-
-```
-terraform destroy -var-file="your.tfvars"
-```
+- [custom](custom): Created by myself
+- [official](custom): Using official [terraform-aws-eks](https://github.com/terraform-aws-modules/terraform-aws-eks) module
 
 ## Cluster Autoscaler
 
@@ -150,7 +73,6 @@ curl https://raw.githubusercontent.com/aws-samples/amazon-cloudwatch-container-i
 ```
 kubectl apply -f https://raw.githubusercontent.com/aws-samples/amazon-cloudwatch-container-insights/latest/k8s-deployment-manifest-templates/deployment-mode/daemonset/container-insights-monitoring/cloudwatch-namespace.yaml
 ```
-
 
 # Resources
 

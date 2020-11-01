@@ -3,11 +3,11 @@
 data "aws_availability_zones" "available" {}
 
 resource "aws_vpc" "demo" {
-  cidr_block = "10.0.0.0/16"
+  cidr_block = var.cidr_block
 
   tags = map(
-    "Name", "terraform-eks-demo-node",
-    "kubernetes.io/cluster/${local.name}", "shared",
+    "Name", var.name,
+    "kubernetes.io/cluster/${var.cluster_name}", "shared",
   )
 }
 
@@ -15,12 +15,12 @@ resource "aws_subnet" "demo" {
   count = 2
 
   availability_zone = data.aws_availability_zones.available.names[count.index]
-  cidr_block        = "10.0.${count.index}.0/24"
+  cidr_block        = cidrsubnet(var.cidr_block, 8, count.index)
   vpc_id            = aws_vpc.demo.id
 
   tags = map(
-    "Name", "terraform-eks-demo-node",
-    "kubernetes.io/cluster/${local.name}", "shared",
+    "Name", var.name,
+    "kubernetes.io/cluster/${var.cluster_name}", "shared",
   )
 }
 
@@ -28,7 +28,7 @@ resource "aws_internet_gateway" "demo" {
   vpc_id = aws_vpc.demo.id
 
   tags = {
-    Name = "terraform-eks-demo"
+    Name = var.name
   }
 }
 

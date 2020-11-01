@@ -12,7 +12,7 @@ data "aws_iam_policy_document" "demo-node" {
 }
 
 resource "aws_iam_role" "demo-node" {
-  name               = "ec2-${local.name}"
+  name               = "ec2-${var.cluster_name}"
   assume_role_policy = data.aws_iam_policy_document.demo-node.json
 }
 
@@ -32,6 +32,6 @@ resource "aws_iam_role_policy_attachment" "demo-node-AmazonEC2ContainerRegistryR
 }
 
 resource "aws_iam_instance_profile" "demo-node" {
-  name = local.name
+  name = var.cluster_name
   role = aws_iam_role.demo-node.name
 }
