@@ -1,3 +1,10 @@
+module "vpc" {
+  source       = "../modules/vpc"
+  cidr_block   = var.vpc_cidr_block
+  name         = var.cluster_name
+  cluster_name = var.cluster_name
+}
+
 data "aws_eks_cluster" "cluster" {
   name = module.my-cluster.cluster_id
 }
@@ -18,8 +25,8 @@ module "my-cluster" {
   source          = "terraform-aws-modules/eks/aws"
   cluster_name    = var.cluster_name
   cluster_version = var.kubernetes_version
-  subnets         = aws_subnet.demo.*.id
-  vpc_id          = aws_vpc.demo.id
+  subnets         = module.vpc.subnet_ids
+  vpc_id          = module.vpc.vpc_id
 
   worker_groups = [
     {
