@@ -29,7 +29,7 @@ resource "aws_launch_configuration" "demo" {
   associate_public_ip_address = true
   iam_instance_profile        = aws_iam_instance_profile.demo-node.name
   image_id                    = data.aws_ami.eks-worker.id
-  instance_type               = "t2.medium"
+  instance_type               = "t2.small"
   name_prefix                 = local.name
   spot_price                  = "0.02" # USD
   security_groups             = [aws_security_group.demo-node.id]

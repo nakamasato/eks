@@ -12,3 +12,8 @@ variable "eks_prefix" {
   type    = string
   default = "terraform-eks"
 }
+
+variable "allowed_cidr_blocks" {
+  default = []
+  description = "whitelist ip range for api"
+}
