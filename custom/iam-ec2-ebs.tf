@@ -21,7 +21,7 @@ data "aws_iam_policy_document" "ebs-full-access" {
 }
 
 resource "aws_iam_policy" "ebs-full-access" {
-  name        = "${local.name}-ebs-full-access-"
+  name        = "${var.cluster_name}-ebs-full-access-"
   description = "enable portworx running on eks worker node to create/delete ebs"
 
   policy = data.aws_iam_policy_document.ebs-full-access.json

@@ -12,7 +12,7 @@ data "aws_iam_policy_document" "autoscaling" {
 }
 
 resource "aws_iam_policy" "autoscaling" {
-  name        = "${local.name}-autoscaling"
+  name        = "${var.cluster_name}-autoscaling"
   description = "enable cluster autoscaler (CA) in EKS"
 
   policy = data.aws_iam_policy_document.autoscaling.json

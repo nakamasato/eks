@@ -1,10 +1,10 @@
-name: eks
+name: eks-custom
 
 on:
   pull_request:
     paths:
     - '**.tf'
-    - '.github/workflows/eks.yml'
+    - '.github/workflows/eks-custom.yml'
 
 jobs:
   build:

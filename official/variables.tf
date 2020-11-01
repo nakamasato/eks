@@ -8,14 +8,9 @@ variable "aws_profile" {
   default = "default"
 }
 
-variable "vpc_cidr_block" {
-  default     = "10.0.0.0/16"
-  description = "cidr for vpc"
-}
-
 variable "cluster_name" {
   type    = string
-  default = "terraform-aws-custom"
+  default = "terraform-aws-module"
 }
 
 variable "kubernetes_version" {
@@ -25,4 +20,8 @@ variable "kubernetes_version" {
 variable "allowed_cidr_blocks" {
   default     = []
   description = "whitelist ip range for api"
+}
+
+variable "vpc_cidr_block" {
+  default = "10.10.0.0/16"
 }

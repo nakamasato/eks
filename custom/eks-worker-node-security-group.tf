@@ -1,7 +1,7 @@
 resource "aws_security_group" "demo-node" {
-  name        = "${local.name}-demo-node"
+  name        = "${var.cluster_name}-demo-node"
   description = "Security group for all nodes in the cluster"
-  vpc_id      = aws_vpc.demo.id
+  vpc_id      = module.vpc.vpc_id
 
   egress {
     from_port   = 0
@@ -12,7 +12,7 @@ resource "aws_security_group" "demo-node" {
 
   tags = map(
     "Name", "terraform-eks-demo-node",
-    "kubernetes.io/cluster/${local.name}", "owned",
+    "kubernetes.io/cluster/${var.cluster_name}", "owned",
   )
 }
 

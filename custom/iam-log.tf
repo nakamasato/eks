@@ -13,7 +13,7 @@ data "aws_iam_policy_document" "log-policy" {
 }
 
 resource "aws_iam_policy" "log-policy" {
-  name        = "${local.name}-log"
+  name        = "${var.cluster_name}-log"
   description = "enable get log of EKS"
 
   policy = data.aws_iam_policy_document.log-policy.json
