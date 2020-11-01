@@ -49,7 +49,7 @@
 ## Directory
 
 - [custom](custom): Created by myself
-- [official](custom): Using official [terraform-aws-eks](https://github.com/terraform-aws-modules/terraform-aws-eks) module
+- [official](official): Using official [terraform-aws-eks](https://github.com/terraform-aws-modules/terraform-aws-eks) module
 
 ## Cluster Autoscaler
 
