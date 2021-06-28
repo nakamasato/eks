@@ -38,20 +38,27 @@ module "my-cluster" {
     }
   ]
 
-  node_groups = {
-    example = {
-      desired_capacity = 1
-      max_capacity     = 10
-      min_capacity     = 1
+  # node_groups_defaults = {
+  #   ami_type  = "AL2_x86_64"
+  #   disk_size = 20
+  # }
 
-      instance_type = "t2.small"
-      k8s_labels = {
-        Environment = "dev"
-        nodegroup  = "managed-node"
-      }
-      additional_tags = {
-        managed = "true"
-      }
-    }
-  }
+  # node_groups = {
+  #   example = {
+  #     desired_capacity = 1
+  #     max_capacity     = 10
+  #     min_capacity     = 1
+
+  #     instance_types = ["m5.large"]
+  #     capacity_type  = "SPOT"
+  #     k8s_labels = {
+  #       Environment = "dev"
+  #       GithubRepo  = "terraform-aws-eks"
+  #       GithubOrg   = "terraform-aws-modules"
+  #     }
+  #     additional_tags = {
+  #       ExtraTag = "example"
+  #     }
+  #   }
+  # }
 }

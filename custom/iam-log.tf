@@ -23,4 +23,3 @@ resource "aws_iam_role_policy_attachment" "demo-node-log-policy" {
   policy_arn = aws_iam_policy.log-policy.arn
   role       = aws_iam_role.demo-node.name
 }
-
