@@ -1,7 +1,7 @@
 # Version
 
 - Kubernetes: 1.17
-- Terraform: 0.13.5
+- Terraform: [0.14.0](https://github.com/hashicorp/terraform/releases/tag/v0.14.0)
 
 # Requirements
 
@@ -11,8 +11,7 @@
 
     ```
     terraform version
-    Terraform v0.13.5
-    + provider registry.terraform.io/hashicorp/aws v3.12.0
+    Terraform v0.14.0
     ```
 
 - awscli
