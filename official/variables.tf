@@ -14,7 +14,7 @@ variable "cluster_name" {
 }
 
 variable "kubernetes_version" {
-  default = "1.17"
+  default = "1.20"
 }
 
 variable "allowed_cidr_blocks" {

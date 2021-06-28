@@ -26,6 +26,10 @@ module "my-cluster" {
   cluster_version = var.kubernetes_version
   subnets         = module.vpc.subnet_ids
   vpc_id          = module.vpc.vpc_id
+  tags = {
+      Environment = "dev"
+      Name = var.cluster_name
+  }
 
   worker_groups = [
     {
@@ -33,4 +37,28 @@ module "my-cluster" {
       asg_max_size  = 2
     }
   ]
+
+  # node_groups_defaults = {
+  #   ami_type  = "AL2_x86_64"
+  #   disk_size = 20
+  # }
+
+  # node_groups = {
+  #   example = {
+  #     desired_capacity = 1
+  #     max_capacity     = 10
+  #     min_capacity     = 1
+
+  #     instance_types = ["m5.large"]
+  #     capacity_type  = "SPOT"
+  #     k8s_labels = {
+  #       Environment = "dev"
+  #       GithubRepo  = "terraform-aws-eks"
+  #       GithubOrg   = "terraform-aws-modules"
+  #     }
+  #     additional_tags = {
+  #       ExtraTag = "example"
+  #     }
+  #   }
+  # }
 }

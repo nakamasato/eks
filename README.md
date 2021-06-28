@@ -1,67 +1,53 @@
-# Version
+# EKS
+## Version
 
-- Kubernetes: 1.17
-- Terraform: [1.0.0](https://github.com/hashicorp/terraform/releases/tag/v1.0.0)
+- Kubernetes: [1.20.0](https://github.com/kubernetes/kubernetes/releases/tag/v1.20.0)
 
-# Requirements
+## Setup cluster
 
-- Terraform
+### Terraform
 
-    [tfenv](https://github.com/tfutils/tfenv)
+- Requirements
+    - Terraform [1.0.0](https://github.com/hashicorp/terraform/releases/tag/v1.0.0)
 
-    ```
-    terraform version
-    Terraform v0.14.0
-    ```
+        [tfenv](https://github.com/tfutils/tfenv)
 
-- awscli
+        ```
+        terraform version
+        Terraform v1.0.0
+        ```
+    - awscli
 
-    version >= 1.16 required
+        version >= 1.16 required
 
-    ```
-    pip install awscli --upgrade --user
-    aws --version
-    aws-cli/1.18.164 Python/3.8.0 Darwin/19.4.0 botocore/1.19.4
-    ```
+        ```
+        pip install awscli --upgrade --user
+        aws --version
+        aws-cli/1.18.164 Python/3.8.0 Darwin/19.4.0 botocore/1.19.4
+        ```
 
-- aws-iam-authenticator
+    - kubectl
 
-    https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html
+        https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html
 
-    ```
-    curl -o aws-iam-authenticator https://amazon-eks.s3-us-west-2.amazonaws.com/1.12.7/2019-03-27/bin/darwin/amd64/aws-iam-authenticator
-    chmod +x ./aws-iam-authenticator
-    mkdir $HOME/bin && cp ./aws-iam-authenticator $HOME/bin/aws-iam-authenticator && export PATH=$HOME/bin:$PATH
-    echo 'export PATH=$HOME/bin:$PATH' >> ~/.zshrc
-    aws-iam-authenticator help
-    ```
+        ```
+        kubectl version --client --short
+        Client Version: v1.19.3
+        ```
 
-- kubectl
+1. Official Terraform module
+    - [official](official): Using official [terraform-aws-eks](https://github.com/terraform-aws-modules/terraform-aws-eks) module
 
-    https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html
+1. Custom Terraform module
+    - [custom](custom): Created by myself
+### Features
 
-    ```
-    kubectl version --client
-    Client Version: version.Info{Major:"1", Minor:"17+", GitVersion:"v1.17.11-eks-cfdc40", GitCommit:"cfdc40d4c1b7d14eb60152107963ae41aa2e4804", GitTreeState:"clean", BuildDate:"2020-09-17T17:10:39Z", GoVersion:"go1.13.15", Compiler:"gc", Platform:"darwin/amd64"}
-    ```
+#### Cluster Autoscaler
 
-## Directory
+Reference: https://eksworkshop.com/scaling/deploy_ca/
+settings of autoscaler: please refer to the k8s/cluster-autoscaler
 
-- [custom](custom): Created by myself
-- [official](official): Using official [terraform-aws-eks](https://github.com/terraform-aws-modules/terraform-aws-eks) module
-
-## Cluster Autoscaler
-
-### Reference
-
-https://eksworkshop.com/scaling/deploy_ca/
-
-
-### settings of autoscaler
-
-please refer to the k8s/cluster-autoscaler
-
-## Container Insights
+#### Container Insights
 
 logs & metrics
 
