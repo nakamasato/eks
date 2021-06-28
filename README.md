@@ -1,7 +1,7 @@
 # Version
 
 - Kubernetes: 1.17
-- Terraform: [0.14.0](https://github.com/hashicorp/terraform/releases/tag/v0.14.0)
+- Terraform: [1.0.0](https://github.com/hashicorp/terraform/releases/tag/v1.0.0)
 
 # Requirements
 

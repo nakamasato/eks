@@ -5,10 +5,10 @@ data "aws_availability_zones" "available" {}
 resource "aws_vpc" "demo" {
   cidr_block = var.cidr_block
 
-  tags = map(
-    "Name", var.name,
-    "kubernetes.io/cluster/${var.cluster_name}", "shared",
-  )
+  tags = {
+    "Name" = var.name,
+    "kubernetes.io/cluster/${var.cluster_name}" = "shared",
+  }
 }
 
 resource "aws_subnet" "demo" {
@@ -18,10 +18,10 @@ resource "aws_subnet" "demo" {
   cidr_block        = cidrsubnet(var.cidr_block, 8, count.index)
   vpc_id            = aws_vpc.demo.id
 
-  tags = map(
-    "Name", var.name,
-    "kubernetes.io/cluster/${var.cluster_name}", "shared",
-  )
+  tags = {
+    "Name" = var.name,
+    "kubernetes.io/cluster/${var.cluster_name}" = "shared",
+  }
 }
 
 resource "aws_internet_gateway" "demo" {
