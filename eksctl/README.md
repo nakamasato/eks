@@ -1,6 +1,11 @@
 # eksctl
 
-version: [0.58.0](https://github.com/weaveworks/eksctl/releases/tag/0.58.0) (Released on 2021-07-23)
+This creates VPC with cidr `192.168.0.0/16`, 3 private subnets, 3 public subnets and name `eksctl-<cluster_name>-cluster/VPC` and EKS cluster with name `cluster_name` given by the argument.
+
+## Version
+
+- eksctl: [0.58.0](https://github.com/weaveworks/eksctl/releases/tag/0.58.0) (Released on 2021-07-23)
+- kubernetes: (you can specify) v1.20.0 (default)
 
 ## AWS permissions
 
@@ -11,12 +16,84 @@ https://github.com/weaveworks/eksctl#aws-account
 eksctl create cluster --name test-cluster --region ap-northeast-1 --profile eks-setup-user
 ```
 
+<details>
+
+```
+eksctl create cluster --name test-cluster --region ap-northeast-1 --profile eks-setup-user
+2021-07-28 06:48:22 [ℹ]  eksctl version 0.58.0
+2021-07-28 06:48:22 [ℹ]  using region ap-northeast-1
+2021-07-28 06:48:22 [ℹ]  setting availability zones to [ap-northeast-1c ap-northeast-1d ap-northeast-1a]
+2021-07-28 06:48:22 [ℹ]  subnets for ap-northeast-1c - public:192.168.0.0/19 private:192.168.96.0/19
+2021-07-28 06:48:22 [ℹ]  subnets for ap-northeast-1d - public:192.168.32.0/19 private:192.168.128.0/19
+2021-07-28 06:48:22 [ℹ]  subnets for ap-northeast-1a - public:192.168.64.0/19 private:192.168.160.0/19
+2021-07-28 06:48:22 [ℹ]  nodegroup "ng-ca18fa65" will use "" [AmazonLinux2/1.20]
+2021-07-28 06:48:22 [ℹ]  using Kubernetes version 1.20
+2021-07-28 06:48:22 [ℹ]  creating EKS cluster "test-cluster" in "ap-northeast-1" region with managed nodes
+2021-07-28 06:48:22 [ℹ]  will create 2 separate CloudFormation stacks for cluster itself and the initial managed nodegroup
+2021-07-28 06:48:22 [ℹ]  if you encounter any issues, check CloudFormation console or try 'eksctl utils describe-stacks --region=ap-northeast-1 --cluster=test-cluster'
+2021-07-28 06:48:22 [ℹ]  CloudWatch logging will not be enabled for cluster "test-cluster" in "ap-northeast-1"
+2021-07-28 06:48:22 [ℹ]  you can enable it with 'eksctl utils update-cluster-logging --enable-types={SPECIFY-YOUR-LOG-TYPES-HERE (e.g. all)} --region=ap-northeast-1 --cluster=test-cluster'
+2021-07-28 06:48:22 [ℹ]  Kubernetes API endpoint access will use default of {publicAccess=true, privateAccess=false} for cluster "test-cluster" in "ap-northeast-1"
+2021-07-28 06:48:22 [ℹ]  2 sequential tasks: { create cluster control plane "test-cluster", 3 sequential sub-tasks: { wait for control plane to become ready, 1 task: { create addons }, create managed nodegroup "ng-ca18fa65" } }
+2021-07-28 06:48:22 [ℹ]  building cluster stack "eksctl-test-cluster-cluster"
+2021-07-28 06:48:22 [ℹ]  deploying stack "eksctl-test-cluster-cluster"
+2021-07-28 06:48:52 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
+2021-07-28 06:49:22 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
+2021-07-28 06:50:23 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
+2021-07-28 06:51:23 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
+2021-07-28 06:52:23 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
+2021-07-28 06:53:23 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
+2021-07-28 06:54:23 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
+2021-07-28 06:55:24 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
+2021-07-28 06:56:24 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
+2021-07-28 06:57:24 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
+2021-07-28 06:58:24 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
+2021-07-28 06:59:24 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
+2021-07-28 07:00:25 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
+2021-07-28 07:01:25 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
+2021-07-28 07:02:25 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
+2021-07-28 07:03:25 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
+2021-07-28 07:04:25 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
+2021-07-28 07:08:28 [ℹ]  building managed nodegroup stack "eksctl-test-cluster-nodegroup-ng-ca18fa65"
+2021-07-28 07:08:29 [ℹ]  deploying stack "eksctl-test-cluster-nodegroup-ng-ca18fa65"
+2021-07-28 07:08:29 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-ng-ca18fa65"
+2021-07-28 07:08:45 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-ng-ca18fa65"
+2021-07-28 07:09:02 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-ng-ca18fa65"
+2021-07-28 07:09:22 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-ng-ca18fa65"
+2021-07-28 07:09:39 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-ng-ca18fa65"
+2021-07-28 07:09:59 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-ng-ca18fa65"
+2021-07-28 07:10:18 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-ng-ca18fa65"
+2021-07-28 07:10:38 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-ng-ca18fa65"
+2021-07-28 07:10:55 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-ng-ca18fa65"
+2021-07-28 07:11:12 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-ng-ca18fa65"
+2021-07-28 07:11:29 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-ng-ca18fa65"
+2021-07-28 07:11:46 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-ng-ca18fa65"
+2021-07-28 07:12:04 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-ng-ca18fa65"
+2021-07-28 07:12:20 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-ng-ca18fa65"
+2021-07-28 07:12:36 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-ng-ca18fa65"
+2021-07-28 07:12:54 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-ng-ca18fa65"
+2021-07-28 07:12:54 [ℹ]  waiting for the control plane availability...
+2021-07-28 07:12:54 [✔]  saved kubeconfig as "/Users/nakamasato/.kube/config"
+2021-07-28 07:12:54 [ℹ]  no tasks
+2021-07-28 07:12:54 [✔]  all EKS cluster resources for "test-cluster" have been created
+2021-07-28 07:12:54 [ℹ]  nodegroup "ng-ca18fa65" has 2 node(s)
+2021-07-28 07:12:54 [ℹ]  node "ip-192-168-63-179.ap-northeast-1.compute.internal" is ready
+2021-07-28 07:12:54 [ℹ]  node "ip-192-168-95-116.ap-northeast-1.compute.internal" is ready
+2021-07-28 07:12:54 [ℹ]  waiting for at least 2 node(s) to become ready in "ng-ca18fa65"
+2021-07-28 07:12:54 [ℹ]  nodegroup "ng-ca18fa65" has 2 node(s)
+2021-07-28 07:12:54 [ℹ]  node "ip-192-168-63-179.ap-northeast-1.compute.internal" is ready
+2021-07-28 07:12:54 [ℹ]  node "ip-192-168-95-116.ap-northeast-1.compute.internal" is ready
+2021-07-28 07:14:58 [ℹ]  kubectl command should work with "/Users/nakamasato/.kube/config", try 'kubectl get nodes'
+2021-07-28 07:14:58 [✔]  EKS cluster "test-cluster" in "ap-northeast-1" region is ready
+```
+
+</details>
+
 ```
 eksctl delete cluster --name test-cluster --region ap-northeast-1 --profile eks-setup-user
 ```
 
 ## with yaml file
-
 
 ```
 eksctl create cluster -f cluster.yaml --profile eks-setup-user
