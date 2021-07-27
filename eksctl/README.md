@@ -1,7 +1,10 @@
 # eksctl
 
-version: [0.40.0](https://github.com/weaveworks/eksctl/releases/tag/0.40.0) (Released on 2021-03-05)
+version: [0.58.0](https://github.com/weaveworks/eksctl/releases/tag/0.58.0) (Released on 2021-07-23)
 
+## AWS permissions
+
+https://github.com/weaveworks/eksctl#aws-account
 ## with command line arguments
 
 ```
@@ -19,121 +22,118 @@ eksctl delete cluster --name test-cluster --region ap-northeast-1 --profile eks-
 eksctl create cluster -f cluster.yaml --profile eks-setup-user
 ```
 
+create:
+
 ```
-eksctl create cluster -f cluster.yaml --profile eks-setup-user
-2021-07-27 22:41:12 [ℹ]  eksctl version 0.40.0
-2021-07-27 22:41:12 [ℹ]  using region ap-northeast-1
-2021-07-27 22:41:12 [ℹ]  setting availability zones to [ap-northeast-1a ap-northeast-1d ap-northeast-1c]
-2021-07-27 22:41:12 [ℹ]  subnets for ap-northeast-1a - public:192.168.0.0/19 private:192.168.96.0/19
-2021-07-27 22:41:12 [ℹ]  subnets for ap-northeast-1d - public:192.168.32.0/19 private:192.168.128.0/19
-2021-07-27 22:41:12 [ℹ]  subnets for ap-northeast-1c - public:192.168.64.0/19 private:192.168.160.0/19
-2021-07-27 22:41:12 [ℹ]  nodegroup "nodegroup-large" will use "ami-0041e50aa2aff5c2c" [AmazonLinux2/1.18]
-2021-07-27 22:41:12 [ℹ]  nodegroup "nodegroup-medium" will use "ami-0041e50aa2aff5c2c" [AmazonLinux2/1.18]
-2021-07-27 22:41:12 [ℹ]  using Kubernetes version 1.18
-2021-07-27 22:41:12 [ℹ]  creating EKS cluster "test-cluster" in "ap-northeast-1" region with un-managed nodes
-2021-07-27 22:41:12 [ℹ]  2 nodegroups (nodegroup-large, nodegroup-medium) were included (based on the include/exclude rules)
-2021-07-27 22:41:12 [ℹ]  will create a CloudFormation stack for cluster itself and 2 nodegroup stack(s)
-2021-07-27 22:41:12 [ℹ]  will create a CloudFormation stack for cluster itself and 0 managed nodegroup stack(s)
-2021-07-27 22:41:12 [ℹ]  if you encounter any issues, check CloudFormation console or try 'eksctl utils describe-stacks --region=ap-northeast-1 --cluster=test-cluster'
-2021-07-27 22:41:12 [ℹ]  CloudWatch logging will not be enabled for cluster "test-cluster" in "ap-northeast-1"
-2021-07-27 22:41:12 [ℹ]  you can enable it with 'eksctl utils update-cluster-logging --enable-types={SPECIFY-YOUR-LOG-TYPES-HERE (e.g. all)} --region=ap-northeast-1 --cluster=test-cluster'
-2021-07-27 22:41:12 [ℹ]  Kubernetes API endpoint access will use default of {publicAccess=true, privateAccess=false} for cluster "test-cluster" in "ap-northeast-1"
-2021-07-27 22:41:12 [ℹ]  2 sequential tasks: { create cluster control plane "test-cluster", 3 sequential sub-tasks: { wait for control plane to become ready, create addons, 2 parallel sub-tasks: { create nodegroup "nodegroup-large", create nodegroup "nodegroup-medium" } } }
-2021-07-27 22:41:12 [ℹ]  building cluster stack "eksctl-test-cluster-cluster"
-2021-07-27 22:41:13 [ℹ]  deploying stack "eksctl-test-cluster-cluster"
-2021-07-27 22:41:13 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
-2021-07-27 22:41:31 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
-2021-07-27 22:41:47 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
-2021-07-27 22:42:05 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
-2021-07-27 22:42:24 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
-2021-07-27 22:42:42 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
-2021-07-27 22:43:01 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
-2021-07-27 22:43:21 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
-2021-07-27 22:43:39 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
-2021-07-27 22:43:56 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
-2021-07-27 22:44:12 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
-2021-07-27 22:44:31 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
-2021-07-27 22:44:48 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
-2021-07-27 22:45:07 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
-2021-07-27 22:45:24 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
-2021-07-27 22:45:41 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
-2021-07-27 22:45:56 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
-2021-07-27 22:46:16 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
-2021-07-27 22:46:31 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
-2021-07-27 22:46:47 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
-2021-07-27 22:47:06 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
-2021-07-27 22:47:26 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
-2021-07-27 22:47:43 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
-2021-07-27 22:48:00 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
-2021-07-27 22:48:19 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
-2021-07-27 22:48:35 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
-2021-07-27 22:48:53 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
-2021-07-27 22:49:10 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
-2021-07-27 22:49:26 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
-2021-07-27 22:49:43 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
-2021-07-27 22:50:01 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
-2021-07-27 22:50:17 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
-2021-07-27 22:50:33 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
-2021-07-27 22:50:49 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
-2021-07-27 22:51:08 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
-2021-07-27 22:51:24 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
-2021-07-27 22:51:44 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
-2021-07-27 22:52:04 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
-2021-07-27 22:52:19 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
-2021-07-27 22:52:36 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
-2021-07-27 22:52:56 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
-2021-07-27 22:53:16 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
-2021-07-27 22:53:32 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
-2021-07-27 22:53:48 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
-2021-07-27 22:54:06 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
-2021-07-27 22:54:22 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
-2021-07-27 22:54:39 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
-2021-07-27 22:54:42 [ℹ]  building nodegroup stack "eksctl-test-cluster-nodegroup-nodegroup-large"
-2021-07-27 22:54:42 [ℹ]  building nodegroup stack "eksctl-test-cluster-nodegroup-nodegroup-medium"
-2021-07-27 22:54:42 [ℹ]  --nodes-min=1 was set automatically for nodegroup nodegroup-large
-2021-07-27 22:54:42 [ℹ]  --nodes-min=2 was set automatically for nodegroup nodegroup-medium
-2021-07-27 22:54:42 [ℹ]  --nodes-max=2 was set automatically for nodegroup nodegroup-medium
-2021-07-27 22:54:42 [ℹ]  --nodes-max=1 was set automatically for nodegroup nodegroup-large
-2021-07-27 22:54:42 [ℹ]  deploying stack "eksctl-test-cluster-nodegroup-nodegroup-medium"
-2021-07-27 22:54:42 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-medium"
-2021-07-27 22:54:42 [ℹ]  deploying stack "eksctl-test-cluster-nodegroup-nodegroup-large"
-2021-07-27 22:54:42 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-large"
-2021-07-27 22:54:57 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-medium"
-2021-07-27 22:55:00 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-large"
-2021-07-27 22:55:17 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-medium"
-2021-07-27 22:55:20 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-large"
-2021-07-27 22:55:33 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-medium"
-2021-07-27 22:55:37 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-large"
-2021-07-27 22:55:48 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-medium"
-2021-07-27 22:55:52 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-large"
-2021-07-27 22:56:05 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-medium"
-2021-07-27 22:56:08 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-large"
-2021-07-27 22:56:22 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-medium"
-2021-07-27 22:56:27 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-large"
-2021-07-27 22:56:42 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-medium"
-2021-07-27 22:56:45 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-large"
-2021-07-27 22:57:01 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-large"
-2021-07-27 22:57:02 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-medium"
-2021-07-27 22:57:19 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-medium"
-2021-07-27 22:57:20 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-large"
-2021-07-27 22:57:37 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-large"
-2021-07-27 22:57:37 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-medium"
-2021-07-27 22:57:53 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-medium"
-2021-07-27 22:57:56 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-large"
-2021-07-27 22:58:12 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-large"
-2021-07-27 22:58:13 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-medium"
-2021-07-27 22:58:13 [✖]  unexpected status "ROLLBACK_IN_PROGRESS" while waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-medium"
-2021-07-27 22:58:13 [ℹ]  fetching stack events in attempt to troubleshoot the root cause of the failure
-2021-07-27 22:58:13 [!]  AWS::IAM::Role/NodeInstanceRole: DELETE_IN_PROGRESS
-2021-07-27 22:58:13 [!]  AWS::EC2::SecurityGroup/SG: DELETE_IN_PROGRESS
-2021-07-27 22:58:13 [!]  AWS::IAM::InstanceProfile/NodeInstanceProfile: DELETE_IN_PROGRESS
-2021-07-27 22:58:13 [!]  AWS::EC2::LaunchTemplate/NodeGroupLaunchTemplate: DELETE_IN_PROGRESS
-2021-07-27 22:58:13 [!]  AWS::EC2::SecurityGroupIngress/IngressInterClusterCP: DELETE_IN_PROGRESS
-2021-07-27 22:58:13 [!]  AWS::EC2::SecurityGroupEgress/EgressInterClusterAPI: DELETE_IN_PROGRESS
-2021-07-27 22:58:13 [!]  AWS::EC2::SecurityGroupEgress/EgressInterCluster: DELETE_IN_PROGRESS
-2021-07-27 22:58:13 [✖]  AWS::AutoScaling::AutoScalingGroup/NodeGroup: CREATE_FAILED – "You must use a valid fully-formed launch template. Invalid value 'm5.medium' for InstanceType. (Service: AmazonAutoScaling; Status Code: 400; Error Code: ValidationError; Request ID: c1698143-1c97-4e42-97c2-b9c0d40e3544; Proxy: null)"
-2021-07-27 22:58:13 [!]  1 error(s) occurred and cluster hasn't been created properly, you may wish to check CloudFormation console
-2021-07-27 22:58:13 [ℹ]  to cleanup resources, run 'eksctl delete cluster --region=ap-northeast-1 --name=test-cluster'
-2021-07-27 22:58:13 [✖]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-medium": ResourceNotReady: failed waiting for successful resource state
+± eksctl create cluster -f cluster.yaml --profile eks-setup-user
+2021-07-27 23:09:31 [ℹ]  eksctl version 0.58.0
+2021-07-27 23:09:31 [ℹ]  using region ap-northeast-1
+2021-07-27 23:09:31 [ℹ]  setting availability zones to [ap-northeast-1a ap-northeast-1c ap-northeast-1d]
+2021-07-27 23:09:31 [ℹ]  subnets for ap-northeast-1a - public:192.168.0.0/19 private:192.168.96.0/19
+2021-07-27 23:09:31 [ℹ]  subnets for ap-northeast-1c - public:192.168.32.0/19 private:192.168.128.0/19
+2021-07-27 23:09:31 [ℹ]  subnets for ap-northeast-1d - public:192.168.64.0/19 private:192.168.160.0/19
+2021-07-27 23:09:32 [ℹ]  nodegroup "nodegroup-large" will use "ami-0ccd353e1b2b0a7f0" [AmazonLinux2/1.20]
+2021-07-27 23:09:32 [ℹ]  nodegroup "nodegroup-medium" will use "ami-0ccd353e1b2b0a7f0" [AmazonLinux2/1.20]
+2021-07-27 23:09:32 [ℹ]  using Kubernetes version 1.20
+2021-07-27 23:09:32 [ℹ]  creating EKS cluster "test-cluster" in "ap-northeast-1" region with un-managed nodes
+2021-07-27 23:09:32 [ℹ]  2 nodegroups (nodegroup-large, nodegroup-medium) were included (based on the include/exclude rules)
+2021-07-27 23:09:32 [ℹ]  will create a CloudFormation stack for cluster itself and 2 nodegroup stack(s)
+2021-07-27 23:09:32 [ℹ]  will create a CloudFormation stack for cluster itself and 0 managed nodegroup stack(s)
+2021-07-27 23:09:32 [ℹ]  if you encounter any issues, check CloudFormation console or try 'eksctl utils describe-stacks --region=ap-northeast-1 --cluster=test-cluster'
+2021-07-27 23:09:32 [ℹ]  CloudWatch logging will not be enabled for cluster "test-cluster" in "ap-northeast-1"
+2021-07-27 23:09:32 [ℹ]  you can enable it with 'eksctl utils update-cluster-logging --enable-types={SPECIFY-YOUR-LOG-TYPES-HERE (e.g. all)} --region=ap-northeast-1 --cluster=test-cluster'
+2021-07-27 23:09:32 [ℹ]  Kubernetes API endpoint access will use default of {publicAccess=true, privateAccess=false} for cluster "test-cluster" in "ap-northeast-1"
+2021-07-27 23:09:32 [ℹ]  2 sequential tasks: { create cluster control plane "test-cluster", 3 sequential sub-tasks: { wait for control plane to become ready, 1 task: { create addons }, 2 parallel sub-tasks: { create nodegroup "nodegroup-large", create nodegroup "nodegroup-medium" } } }
+2021-07-27 23:09:32 [ℹ]  building cluster stack "eksctl-test-cluster-cluster"
+2021-07-27 23:09:33 [ℹ]  deploying stack "eksctl-test-cluster-cluster"
+2021-07-27 23:10:03 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
+2021-07-27 23:10:33 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
+2021-07-27 23:11:34 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
+2021-07-27 23:12:34 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
+2021-07-27 23:13:34 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
+2021-07-27 23:14:34 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
+2021-07-27 23:15:35 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
+2021-07-27 23:16:35 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
+2021-07-27 23:17:36 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
+2021-07-27 23:18:36 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
+2021-07-27 23:19:36 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
+2021-07-27 23:20:36 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
+2021-07-27 23:21:36 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
+2021-07-27 23:22:37 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
+2021-07-27 23:23:37 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
+2021-07-27 23:24:37 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-cluster"
+2021-07-27 23:28:41 [ℹ]  building nodegroup stack "eksctl-test-cluster-nodegroup-nodegroup-large"
+2021-07-27 23:28:41 [ℹ]  building nodegroup stack "eksctl-test-cluster-nodegroup-nodegroup-medium"
+2021-07-27 23:28:41 [ℹ]  --nodes-min=1 was set automatically for nodegroup nodegroup-large
+2021-07-27 23:28:41 [ℹ]  --nodes-max=1 was set automatically for nodegroup nodegroup-large
+2021-07-27 23:28:41 [ℹ]  --nodes-min=2 was set automatically for nodegroup nodegroup-medium
+2021-07-27 23:28:41 [ℹ]  --nodes-max=2 was set automatically for nodegroup nodegroup-medium
+2021-07-27 23:28:41 [ℹ]  deploying stack "eksctl-test-cluster-nodegroup-nodegroup-large"
+2021-07-27 23:28:41 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-large"
+2021-07-27 23:28:42 [ℹ]  deploying stack "eksctl-test-cluster-nodegroup-nodegroup-medium"
+2021-07-27 23:28:42 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-medium"
+2021-07-27 23:28:57 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-medium"
+2021-07-27 23:29:00 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-large"
+2021-07-27 23:29:17 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-medium"
+2021-07-27 23:29:18 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-large"
+2021-07-27 23:29:33 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-medium"
+2021-07-27 23:29:34 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-large"
+2021-07-27 23:29:50 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-medium"
+2021-07-27 23:29:54 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-large"
+2021-07-27 23:30:07 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-medium"
+2021-07-27 23:30:11 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-large"
+2021-07-27 23:30:27 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-medium"
+2021-07-27 23:30:30 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-large"
+2021-07-27 23:30:44 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-medium"
+2021-07-27 23:30:48 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-large"
+2021-07-27 23:31:03 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-medium"
+2021-07-27 23:31:05 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-large"
+2021-07-27 23:31:21 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-large"
+2021-07-27 23:31:22 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-medium"
+2021-07-27 23:31:37 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-medium"
+2021-07-27 23:31:41 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-large"
+2021-07-27 23:31:53 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-medium"
+2021-07-27 23:31:57 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-large"
+2021-07-27 23:32:12 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-medium"
+2021-07-27 23:32:12 [✖]  unexpected status "ROLLBACK_COMPLETE" while waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-medium"
+2021-07-27 23:32:12 [ℹ]  fetching stack events in attempt to troubleshoot the root cause of the failure
+2021-07-27 23:32:12 [!]  AWS::IAM::Role/NodeInstanceRole: DELETE_IN_PROGRESS
+2021-07-27 23:32:12 [!]  AWS::EC2::SecurityGroup/SG: DELETE_IN_PROGRESS
+2021-07-27 23:32:12 [!]  AWS::IAM::InstanceProfile/NodeInstanceProfile: DELETE_IN_PROGRESS
+2021-07-27 23:32:12 [!]  AWS::EC2::LaunchTemplate/NodeGroupLaunchTemplate: DELETE_IN_PROGRESS
+2021-07-27 23:32:12 [!]  AWS::EC2::SecurityGroupEgress/EgressInterCluster: DELETE_IN_PROGRESS
+2021-07-27 23:32:12 [!]  AWS::EC2::SecurityGroupEgress/EgressInterClusterAPI: DELETE_IN_PROGRESS
+2021-07-27 23:32:12 [!]  AWS::EC2::SecurityGroupIngress/IngressInterClusterCP: DELETE_IN_PROGRESS
+2021-07-27 23:32:12 [✖]  AWS::AutoScaling::AutoScalingGroup/NodeGroup: CREATE_FAILED – "You must use a valid fully-formed launch template. Invalid value 'm5.medium' for InstanceType. (Service: AmazonAutoScaling; Status Code: 400; Error Code: ValidationError; Request ID: 7f85672c-22d7-4e97-9fe7-e630dc5e6ebb; Proxy: null)"
+2021-07-27 23:32:12 [!]  1 error(s) occurred and cluster hasn't been created properly, you may wish to check CloudFormation console
+2021-07-27 23:32:12 [ℹ]  to cleanup resources, run 'eksctl delete cluster --region=ap-northeast-1 --name=test-cluster'
+2021-07-27 23:32:12 [✖]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-medium": ResourceNotReady: failed waiting for successful resource state
 Error: failed to create cluster "test-cluster"
+```
+
+delete:
+
+```
+eksctl delete cluster -f cluster.yaml --profile eks-setup-user
+2021-07-27 23:32:41 [ℹ]  eksctl version 0.58.0
+2021-07-27 23:32:41 [ℹ]  using region ap-northeast-1
+2021-07-27 23:32:41 [ℹ]  deleting EKS cluster "test-cluster"
+2021-07-27 23:32:43 [ℹ]  deleted 0 Fargate profile(s)
+2021-07-27 23:32:44 [ℹ]  cleaning up AWS load balancers created by Kubernetes objects of Kind Service or Ingress
+2021-07-27 23:32:47 [ℹ]  2 sequential tasks: { 2 parallel sub-tasks: { delete nodegroup "nodegroup-medium", delete nodegroup "nodegroup-large" }, delete cluster control plane "test-cluster" [async] }
+2021-07-27 23:32:47 [ℹ]  will delete stack "eksctl-test-cluster-nodegroup-nodegroup-large"
+2021-07-27 23:32:47 [ℹ]  waiting for stack "eksctl-test-cluster-nodegroup-nodegroup-large" to get deleted
+2021-07-27 23:32:47 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-large"
+2021-07-27 23:32:48 [ℹ]  will delete stack "eksctl-test-cluster-nodegroup-nodegroup-medium"
+2021-07-27 23:32:48 [ℹ]  waiting for stack "eksctl-test-cluster-nodegroup-nodegroup-medium" to get deleted
+2021-07-27 23:32:48 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-medium"
+2021-07-27 23:33:04 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-large"
+2021-07-27 23:33:06 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-medium"
+2021-07-27 23:33:23 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-large"
+2021-07-27 23:33:42 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-large"
+2021-07-27 23:34:01 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-large"
+2021-07-27 23:34:17 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-large"
+2021-07-27 23:34:34 [ℹ]  waiting for CloudFormation stack "eksctl-test-cluster-nodegroup-nodegroup-large"
+2021-07-27 23:34:35 [ℹ]  will delete stack "eksctl-test-cluster-cluster"
+2021-07-27 23:34:35 [✔]  all cluster resources were deleted
 ```

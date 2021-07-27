@@ -1,7 +1,8 @@
 # EKS
 ## Version
 
-- Kubernetes: [1.20.0](https://github.com/kubernetes/kubernetes/releases/tag/v1.20.0)
+- Kubernetes: [1.20.0](https://github.com/kubernetes/kubernetes/releases/tag/v1.20.0) (Released on 2020-12-09. Supported by EKS on 2021-05-18)
+- eksctl: [0.58.0](https://github.com/weaveworks/eksctl/releases/tag/0.58.0) (Released on 2021-07-23)
 
 ## Setup cluster
 
