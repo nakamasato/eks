@@ -101,6 +101,8 @@ eksctl create cluster -f cluster.yaml --profile eks-setup-user
 
 create:
 
+<details>
+
 ```
 ± eksctl create cluster -f cluster.yaml --profile eks-setup-user
 2021-07-27 23:09:31 [ℹ]  eksctl version 0.58.0
@@ -188,7 +190,11 @@ create:
 Error: failed to create cluster "test-cluster"
 ```
 
+</details>
+
 delete:
+
+<details>
 
 ```
 eksctl delete cluster -f cluster.yaml --profile eks-setup-user
@@ -214,3 +220,5 @@ eksctl delete cluster -f cluster.yaml --profile eks-setup-user
 2021-07-27 23:34:35 [ℹ]  will delete stack "eksctl-test-cluster-cluster"
 2021-07-27 23:34:35 [✔]  all cluster resources were deleted
 ```
+
+</details>
