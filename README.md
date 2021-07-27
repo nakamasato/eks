@@ -40,11 +40,15 @@
 
 1. Custom Terraform module
     - [custom](custom): Created by myself
+
+### eksctl
+
+[eksctl](eksctl): [Official cli for Amazon EKS](https://eksctl.io/)
 ### Features
 
 #### Cluster Autoscaler
 
-Reference: https://eksworkshop.com/scaling/deploy_ca/
+Reference: https://www.eksworkshop.com/beginner/080_scaling/deploy_ca/
 settings of autoscaler: please refer to the k8s/cluster-autoscaler
 
 #### Container Insights
