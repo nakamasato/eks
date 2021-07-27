@@ -1,4 +1,6 @@
-# How to use
+# eks cluster with terraform-aws-eks module
+
+This will create dedicated VPC with cidr `172.16.0.0/16` and name `cluster_name` given by variable. This example is based on https://github.com/terraform-aws-modules/terraform-aws-eks/blob/master/examples/managed_node_groups
 
 ## Create an EKS cluster
 
@@ -13,7 +15,7 @@
 
     ```
     terraform init --backend-config="backend.conf"
-    terraform apply -var-file="your.tfvars"
+    terraform apply -var-file=your.tfvars
     ```
 
 1. Set kube config
@@ -38,7 +40,8 @@ Both can be used together in the same cluster.
 [What is the difference between node_groups and worker_groups?](https://github.com/terraform-aws-modules/terraform-aws-eks/blob/master/docs/faq.md#what-is-the-difference-between-node_groups-and-worker_groups)
 # Reference
 
-https://github.com/terraform-aws-modules/terraform-aws-eks/blob/master/examples/managed_node_groups/main.tf
+- https://github.com/terraform-aws-modules/terraform-aws-eks/blob/master/examples/managed_node_groups/main.tf
+- https://github.com/terraform-aws-modules/terraform-aws-eks/blob/master/docs/iam-permissions.md#iam-permissions
 
 # Issues
 
